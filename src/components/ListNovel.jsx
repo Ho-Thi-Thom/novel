@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const ListNovel = ({ data = [] }) => {
   return (
-    <div className="max-w-lg w-full mx-auto space-y-5">
+    <div className="max-w-lg w-full mx-auto space-y-5 px-2.5">
       {data.map((item) => (
         <div
           key={item._id}

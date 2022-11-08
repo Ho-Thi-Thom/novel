@@ -1,37 +1,49 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import client from "../../sanity/config";
-import { GET_DETAIL_NOVEL } from "../../sanity/novel/listNovel";
+import React from "react";
+import { Link, Outlet, useParams } from "react-router-dom";
+import { GiEvilBook } from "react-icons/gi";
+import { RiCharacterRecognitionLine } from "react-icons/ri";
+import { BsCheck2Circle } from "react-icons/bs";
 const Novel = () => {
   const { id } = useParams();
-  const [data, setData] = useState({
-    title: "",
-    content: "",
-    vocabularies: [],
-    contentVos: [],
-  });
-  useEffect(() => {
-    client.fetch(GET_DETAIL_NOVEL, { IdNovel: id }).then((result) => {
-      const [first, ...contentList] = result.content.split("*");
-      const contentVos = [first];
-      contentList.forEach((item, index) => {
-        contentVos.push(
-          <span title={result.vocabularies[index].vi} key={index}>
-            {result.vocabularies[index].en}
-          </span>
-        );
-        contentVos.push(item);
-      });
-      setData({ ...result, contentVos: contentVos });
-    });
-  }, []);
-  console.log(data);
+  alert(id);
   return (
     <div>
-      <h2 className="text-center font-bold text-2xl uppercase text-lime-800 my-10">
-        {data.title}
-      </h2>
-      <div className="prose md:prose-lg lg:prose-xl">{data.contentVos}</div>
+      <nav className="bg-gray-50 dark:bg-gray-700">
+        <div className="p-4 mx-auto max-w-screen-xl md:mx-6 xl:mx-2">
+          <div class="flex justify-center">
+            <ul class="flex flex-row space-x-5 text-sm font-medium-">
+              <li className="flex flex-col items-center">
+                <GiEvilBook className="text-2xl" />
+                <Link
+                  to="*"
+                  className="text-gray-900 dark:text-white hover:none hover:text-red-600 "
+                >
+                  Novel
+                </Link>
+              </li>
+              <li className="flex flex-col items-center">
+                <RiCharacterRecognitionLine className="text-2xl" />
+                <Link
+                  to="vocabulary"
+                  className="text-gray-900 dark:text-white hover:none hover:text-red-600 "
+                >
+                  Vocabulary
+                </Link>
+              </li>
+              <li className="flex flex-col items-center">
+                <BsCheck2Circle className="text-2xl" />
+                <Link
+                  to="multiple"
+                  className="text-gray-900 dark:text-white hover:none hover:text-red-600 "
+                >
+                  Multiple
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <Outlet />
     </div>
   );
 };
