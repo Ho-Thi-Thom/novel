@@ -15,6 +15,7 @@
     "react-icons": "^4.6.0",
     "react-loader-spinner": "^5.3.4",
     "react-native-pager-view": "^6.0.2",
+    "react-redux": "^8.0.5",
     "react-router-dom": "^6.4.3",
     "react-scripts": "5.0.1",
     "react-spinners": "^0.13.6",
