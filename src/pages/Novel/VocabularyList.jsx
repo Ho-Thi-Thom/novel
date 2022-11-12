@@ -13,9 +13,9 @@ const VocabularyList = () => {
       <div className="max-w-lg w-full mx-auto px-2.5 py-4">
         Số lượng: {value.vocabularies.length}
       </div>
-      <div className="max-w-lg w-full mx-auto space-y-5 px-2.5 overflow-auto pr-5">
+      <div className="max-w-lg w-full mx-auto space-y-5 px-2.5  pr-5">
         {value.vocabularies.map((item) => (
-          <Card item={item} />
+          <Card item={item} key={item._id} />
         ))}
       </div>
     </div>

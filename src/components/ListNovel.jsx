@@ -9,7 +9,7 @@ const ListNovel = ({ data = [] }) => {
           key={item._id}
           className=" rounded-md px-5 py-3 shadow-lg border border-lime-600 hover:text-white hover:bg-lime-700 transition-all"
         >
-          <Link to={`/novel/${item._id}`} className="text-xl truncate block">
+          <Link to={`/${item._id}/novel`} className="text-xl truncate block">
             {item.title}
           </Link>
         </div>

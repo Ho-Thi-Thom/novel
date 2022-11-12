@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
 import Novel from "./pages/Novel";
@@ -10,8 +10,9 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/novel/:id" element={<Novel />}>
-          <Route path="*" element={<TabNovel />} />
+        <Route path="/:id" element={<Novel />}>
+          <Route index element={<Navigate to="novel" />} />
+          <Route path="novel" element={<TabNovel />} />
           <Route path="vocabulary" element={<VocabularyList />} />
           <Route path="multiple" element={<Multiple />} />
         </Route>

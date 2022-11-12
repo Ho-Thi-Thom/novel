@@ -16,3 +16,11 @@ export const GET_DETAIL_NOVEL = `
     }
 }
 `;
+
+export const GET_VOCABULARY = `
+*[_type == 'vocabulary'][0]{
+    _id,
+    en,
+    vi
+}
+`;
