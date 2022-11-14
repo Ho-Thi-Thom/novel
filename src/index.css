@@ -3,5 +3,6 @@
 @tailwind utilities;
 
 body {
-  @apply bg-slate-200;
+  margin: 0;
+  @apply bg-gradient-to-r from-sky-700  to-purple-800;
 }

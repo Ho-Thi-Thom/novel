@@ -14,11 +14,13 @@ const Home = () => {
   const [state, setState] = useState(false);
   if (state) {
     return (
-      <div>
-        <h1 className="text-center font-bold text-2xl uppercase text-lime-800 my-10">
-          Tiểu thuyết TOEIC
-        </h1>
-        <ListNovel data={data} />
+      <div className="h-full w-full">
+        <div className=" py-3 fixed top-0 left-0 right-0 bg-black">
+          <h1 className="text-center uppercase text-2xl font-bold text-yellow-50 font-sans"> Tiểu thuyết TOEIC</h1>
+        </div>
+        <div className="bg-white w-full py-5 my-16 max-w-xl mx-auto border rounded-md ">
+          <ListNovel data={data} />
+        </div>
       </div>
     );
   } else {

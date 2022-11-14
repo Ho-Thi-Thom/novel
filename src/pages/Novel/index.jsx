@@ -3,6 +3,7 @@ import { NavLink, Outlet, useParams } from "react-router-dom";
 import { GiEvilBook } from "react-icons/gi";
 import { RiCharacterRecognitionLine } from "react-icons/ri";
 import { BsCheck2Circle } from "react-icons/bs";
+import { AiFillHome } from "react-icons/ai";
 import { useState } from "react";
 import { useEffect } from "react";
 import client from "../../sanity/config";
@@ -38,10 +39,7 @@ const Novel = () => {
               }}
               className="bg-lime-900 text-white font-bold py-2 px-4 rounded"
             >
-              <div
-                key={index}
-                className="text-violet-800 font-normal cursor-pointer inline-flex"
-              >
+              <div key={index} className="text-violet-800 font-normal cursor-pointer inline-flex">
                 {result.vocabularies[index].en}
               </div>
             </Tooltip>
@@ -55,9 +53,8 @@ const Novel = () => {
         setState(2);
       });
   }, []);
-  let activeClassName =
-    "text-green-600 flex flex-col justify-center items-center";
-  let notActive = "flex flex-col justify-center items-center";
+  let activeClassName = "text-green-400 flex flex-col justify-center items-center";
+  let notActive = "flex flex-col justify-center items-center  text-yellow-50";
   // LOADING
   if (state === 0) {
     <Loading />;
@@ -65,39 +62,30 @@ const Novel = () => {
     // DATA
     return (
       <div>
-        <nav className="bg-gray-50 dark:bg-gray-700 fixed left-0 right-0 top-0 h-16 z-10 flex justify-center items-center">
-          <div className="p-4 mx-auto max-w-screen-xl md:mx-6 xl:mx-2">
+        <nav className=" bg-black fixed left-0 right-0 top-0 h-16 z-10 flex justify-center items-center">
+          <div className="mx-auto max-w-screen-xl md:mx-6 xl:mx-2 ">
             <div className="flex justify-center">
               <ul className="flex flex-row space-x-5 text-sm font-medium ">
                 <li className="flex flex-col items-center justify-center">
-                  <NavLink
-                    to="novel"
-                    className={({ isActive }) =>
-                      isActive ? activeClassName : notActive
-                    }
-                  >
-                    <GiEvilBook className="text-2xl" />
+                  <NavLink to="/" className="flex flex-col justify-center items-center  text-white ">
+                    <AiFillHome className="text-2xl " />
+                    Home
+                  </NavLink>
+                </li>
+                <li className="flex flex-col items-center justify-center">
+                  <NavLink to="novel" className={({ isActive }) => (isActive ? activeClassName : notActive)}>
+                    <GiEvilBook className=" text-2xl " />
                     Novel
                   </NavLink>
                 </li>
                 <li className="flex flex-col items-center justify-center">
-                  <NavLink
-                    to="vocabulary"
-                    className={({ isActive }) =>
-                      isActive ? activeClassName : notActive
-                    }
-                  >
+                  <NavLink to="vocabulary" className={({ isActive }) => (isActive ? activeClassName : notActive)}>
                     <RiCharacterRecognitionLine className="text-2xl" />
                     Vocabulary
                   </NavLink>
                 </li>
                 <li className="flex flex-col items-center justify-center">
-                  <NavLink
-                    to="multiple"
-                    className={({ isActive }) =>
-                      isActive ? activeClassName : notActive
-                    }
-                  >
+                  <NavLink to="multiple" className={({ isActive }) => (isActive ? activeClassName : notActive)}>
                     <BsCheck2Circle className="text-2xl" />
                     Multiple
                   </NavLink>
