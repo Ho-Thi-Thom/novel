@@ -5,6 +5,7 @@ import Novel from "./pages/Novel";
 import TabNovel from "./pages/Novel/TabNovel";
 import VocabularyList from "./pages/Novel/VocabularyList";
 import Multiple from "./pages/Novel/Multiple";
+
 function App() {
   return (
     <BrowserRouter>

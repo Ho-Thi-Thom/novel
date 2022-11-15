@@ -53,7 +53,6 @@ const Multiple = () => {
     setNotification("Hãy chọn đáp án");
     count.current = 0;
   };
-  console.log((((index + 1) / randomListVoc.length) * 100).toFixed(0));
   if (resultPage) {
     return (
       <div className=" lg:max-w-4xl sm:max-w-xl mx-auto  mt-10 w-full">
@@ -78,77 +77,75 @@ const Multiple = () => {
         </div>
       </div>
     );
-  } else {
-    return (
-      <div className=" lg:max-w-4xl sm:max-w-xl mx-auto  mt-10 w-full ">
-        <div className="rounded-lg  bg-white shadow-lg mx-2  min-h-[500px] p-2">
-          <div className="mb-3">
-            <div className="text-center">
-              {index + 1} / {randomListVoc.length}
-            </div>
-            <div className="w-full h-7 border  rounded-md mx-auto border-lime-900 max-w-md ">
-              <div
-                className={`bg-cyan-400 border h-full rounded-md w-[${(
-                  ((index + 1) / randomListVoc.length) *
-                  100
-                ).toFixed(0)}%]`}
-              ></div>
-            </div>
+  }
+
+  return (
+    <div className=" lg:max-w-4xl sm:max-w-xl mx-auto  mt-10 w-full ">
+      <div className="rounded-lg  bg-white shadow-lg mx-2  min-h-[500px] p-2">
+        <div className="mb-3">
+          <div className="text-center">
+            {index + 1} / {randomListVoc.length}
           </div>
-          <p className="text-red-600 text-center pl-3 mb-3 text-lg font-medium">{randomListVoc[index].en}</p>
-          <div
-            className={
-              (isCorrect === 0
-                ? " text-black bg-yellow-200"
-                : isCorrect === 1
-                ? "bg-lime-400"
-                : " bg-red-400 text-white") + " text-center max-w-md mx-auto border rounded-md mt-2"
-            }
-          >
-            {notification}
-          </div>
-          <div className="max-w-md min-h-[300px]  rounded-md mx-auto mt-5">
-            {randomListVoc[index].envis.map((item, indexItem) => (
-              <CardMultiple
-                value={item}
-                handleClick={setAnswer}
-                answer={answer}
-                isCorrect={isCorrect}
-                idCorrect={randomListVoc[index]._id}
-                key={indexItem}
-              />
-            ))}
-          </div>
-          <div className=" flex justify-center items-center mt-5">
-            {isCorrect !== 0 ? (
-              index !== randomListVoc.length - 1 ? (
-                <Button
-                  className="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-                  onClick={handleNext}
-                >
-                  Tiếp theo
-                </Button>
-              ) : (
-                <Button
-                  className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-                  onClick={handleResult}
-                >
-                  Xem kết quả
-                </Button>
-              )
-            ) : (
-              <Button
-                className="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-                onClick={handleSubmit}
-              >
-                Kiểm tra
-              </Button>
-            )}
+          <div className="w-full h-2 border  rounded-md mx-auto border-lime-900 max-w-md ">
+            <div
+              className="bg-gradient-to-r to-sky-700  from-purple-800 border h-full rounded-md "
+              style={{ width: ((index + 1) / randomListVoc.length) * 100 + "%", transition: "width 1s" }}
+            ></div>
           </div>
         </div>
+        <p className="text-red-600 text-center pl-3 mb-3 text-lg font-medium">{randomListVoc[index].en}</p>
+        <div
+          className={
+            (isCorrect === 0
+              ? " text-black bg-yellow-200"
+              : isCorrect === 1
+              ? "bg-lime-400"
+              : " bg-red-400 text-white") + " text-center max-w-md mx-auto border rounded-md mt-2"
+          }
+        >
+          {notification}
+        </div>
+        <div className="max-w-md min-h-[300px]  rounded-md mx-auto mt-5">
+          {randomListVoc[index].envis.map((item, indexItem) => (
+            <CardMultiple
+              value={item}
+              handleClick={setAnswer}
+              answer={answer}
+              isCorrect={isCorrect}
+              idCorrect={randomListVoc[index]._id}
+              key={indexItem}
+            />
+          ))}
+        </div>
+        <div className=" flex justify-center items-center mt-5">
+          {isCorrect !== 0 ? (
+            index !== randomListVoc.length - 1 ? (
+              <Button
+                className="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                onClick={handleNext}
+              >
+                Tiếp theo
+              </Button>
+            ) : (
+              <Button
+                className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                onClick={handleResult}
+              >
+                Xem kết quả
+              </Button>
+            )
+          ) : (
+            <Button
+              className="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+              onClick={handleSubmit}
+            >
+              Kiểm tra
+            </Button>
+          )}
+        </div>
       </div>
-    );
-  }
+    </div>
+  );
 };
 
 export default Multiple;

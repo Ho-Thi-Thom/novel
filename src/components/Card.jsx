@@ -1,26 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 
 const Card = ({ item }) => {
-  const [isCheck, setIsCheck] = useState(true);
-  if (isCheck) {
-    return (
-      <div
-        className="rounded-md px-5 py-3 shadow-lg border border-lime-600 transition-all"
-        onMouseOver={() => setIsCheck(false)}
-      >
-        {item.en}
-      </div>
-    );
-  } else {
-    return (
-      <div
-        className="rounded-md px-5 py-3 shadow-lg border border-lime-600 transition-all bg-lime-800 text-white cursor-pointer"
-        onMouseLeave={() => setIsCheck(true)}
-      >
-        {item.vi}
-      </div>
-    );
-  }
+  return (
+    <div className="rounded-md px-5 py-3 shadow-lg border border-lime-600 transition-all group hover:bg-lime-500 hover:text-white">
+      <span className="block group-hover:hidden">{item.en}</span>
+      <span className="hidden group-hover:block">{item.vi}</span>
+    </div>
+  );
 };
+// className="rounded-md px-5 py-3 shadow-lg border border-lime-600 transition-all bg-lime-800 text-white cursor-pointer"
 
 export default Card;
