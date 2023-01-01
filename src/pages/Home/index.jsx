@@ -19,7 +19,7 @@ const Home = () => {
 
   return (
     <div className="h-full w-full">
-      <div className=" py-3 fixed top-0 left-0 right-0 bg-black">
+      <div className=" py-3  top-0 left-0 right-0 bg-black">
         <h1 className="text-center uppercase text-2xl font-bold text-yellow-50 font-sans"> Tiểu thuyết TOEIC</h1>
       </div>
       <div ref={parent}>

@@ -1,5 +1,5 @@
 export const GET_ALL_NOVEL = `
-    *[_type == 'story'] {
+    *[_type == 'story'] | order(dateTime(_createdAt) asc) {
         _id,
         _createdAt,
         title

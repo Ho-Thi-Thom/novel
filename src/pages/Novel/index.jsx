@@ -43,7 +43,7 @@ const Novel = () => {
               }}
               className="bg-lime-900 text-white font-bold py-2 px-4 rounded"
             >
-              <div key={index} className="text-violet-800 font-normal cursor-pointer inline-flex">
+              <div key={index} className="text-violet-800 font-normal cursor-pointer inline-flex lowercase">
                 {result.vocabularies[index].en}
               </div>
             </Tooltip>
